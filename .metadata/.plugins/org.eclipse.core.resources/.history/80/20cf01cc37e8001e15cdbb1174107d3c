@@ -1,0 +1,23 @@
+package com.khasim.orm;
+
+import java.time.LocalDateTime;
+
+import com.khasim.orm.Entity.Person;
+import com.khasim.orm.Model.PersonDetails;
+
+public class PersonMapper {
+
+	public Person ModelToEntity(PersonDetails personDetails) {
+		
+		Person person = new Person();
+		person.setId(personDetails.getId());
+		person.setFirstName(personDetails.getFirstName());
+		person.setLastname(personDetails.getLastname());
+		person.setEmail(personDetails.getEmail());
+		person.setAge(personDetails.getAge());
+		person.setCreatBy(System.getProperty("user.name"));
+		person.setCreateAt(LocalDateTime.now());
+		
+		return person;
+	}
+}

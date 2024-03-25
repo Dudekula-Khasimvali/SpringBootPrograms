@@ -1,0 +1,5 @@
+package com.khasim.orm.repository;
+
+public interface BookRepository {
+
+}

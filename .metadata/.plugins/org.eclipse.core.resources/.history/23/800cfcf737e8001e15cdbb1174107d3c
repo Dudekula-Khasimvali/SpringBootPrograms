@@ -1,0 +1,31 @@
+package com.khasim.orm;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.khasim.orm.Entity.Person;
+import com.khasim.orm.Model.PersonDetails;
+
+public class PersonMapper {
+
+
+	
+	public List<Person> modelToEntityConversion(List<PersonDetails> productDetailsList) {
+		List<Person> persons = new ArrayList<>();
+		
+		for (PersonDetails proDetails : productDetailsList) {
+			Person person = new Person();
+			person.setId(proDetails.getId());
+			person.setFirstName(proDetails.getFirstName());
+			person.setLastname(proDetails.getLastname());
+			person.setEmail(proDetails.getEmail());
+			person.setAge(proDetails.getAge());
+			person.setCreatBy(System.getProperty("user.name"));
+			person.setCreateAt(LocalDateTime.now());
+			persons.add(person); 
+		}
+		
+		return persons;
+	}
+}

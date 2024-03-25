@@ -1,0 +1,6 @@
+INSERT INTO books (name, author, price) VALUES
+('PIRATE OF THE CARABBIANS', 'KV', 12.99),
+('GAME OF THRONES', 'VK', 10.50),
+('SEX EDUCATION ', 'VS', 9.75),
+('FALL', 'VN', 8.99),
+('SQUID GAME', 'KVSN', 11.25);

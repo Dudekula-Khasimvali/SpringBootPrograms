@@ -1,0 +1,32 @@
+spring.application.name=Usingh2springdatajpa
+
+server.port = 7868
+
+
+
+#spring.datasource.url = jdbc:h2:mem:praveen
+
+#spring.datasource.driverClassName = org.h2.Driver
+
+#spring.datasource.username = khasim
+
+#spring.datasource.password = khasim@1234
+
+
+
+#spring.h2.console.enabled=true
+
+#spring.jpa.show-sql=true
+
+
+
+spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=TRUE
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=khasim@123
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+spring.h2.console.settings.trace=false
+

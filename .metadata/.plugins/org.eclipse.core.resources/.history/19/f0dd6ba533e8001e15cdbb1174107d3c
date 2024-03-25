@@ -1,0 +1,5 @@
+package com.khasim.orm.Repository;
+
+public interface PersonRepository {
+
+}

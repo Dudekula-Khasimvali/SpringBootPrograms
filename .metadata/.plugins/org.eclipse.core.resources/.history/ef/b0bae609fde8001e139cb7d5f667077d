@@ -1,0 +1,11 @@
+package com.khasim.orm;
+
+import org.springframework.boot.CommandLineRunner;
+
+public class BookClient implements CommandLineRunner{
+
+	@Override
+	public void run(String... args) throws Exception {
+			
+}
+}

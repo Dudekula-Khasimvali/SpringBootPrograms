@@ -1,0 +1,26 @@
+package com.khasim.mapper;
+
+import java.time.LocalDateTime;
+
+import org.apache.catalina.User;
+import org.springframework.http.ProblemDetail;
+
+import com.khasim.entity.Product;
+import com.khasim.model.ProductDetails;
+
+public class ProductMapper {
+	
+	//This method takes model as input Entity as output
+	public Product modelToEntity(ProductDetails productDetails) {
+		
+		Product product = new Product();
+		product.setProId(productDetails.getProId());
+		product.setProName(productDetails.getProName());
+		product.setProPrice(productDetails.getProPrice());
+		product.setCreateAt(LocalDateTime.now());
+		product.setCreateBy(System.getProperty("user.name"));
+		
+		return product;
+	}
+
+}

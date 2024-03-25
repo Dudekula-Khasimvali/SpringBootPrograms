@@ -1,0 +1,19 @@
+spring.application.name=Usingh2springdatajpa
+
+server.port = 7868
+
+
+
+spring.datasource.url = jdbc:h2:mem:praveen
+
+spring.datasource.driverClassName = org.h2.Driver
+
+spring.datasource.username = sa
+
+spring.datasource.password = Praveen@123
+
+
+
+spring.h2.console.enabled=true
+
+spring.jpa.show-sql=true

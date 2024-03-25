@@ -1,0 +1,22 @@
+package com.khasim.orm.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.khasim.orm.entity.Book;
+@Repository
+public interface BookRepository extends JpaRepository<Book, Integer>{
+
+	@Query("select b.isbn,b.author from Book b")
+	public List<String> getData();
+	
+	@Query("select count(b) from Book where b.author = :author")
+	public int authorCount(String author);
+	
+	@Query("select Distinct b.author from book b")
+	public List<String> getData1();	
+	
+}

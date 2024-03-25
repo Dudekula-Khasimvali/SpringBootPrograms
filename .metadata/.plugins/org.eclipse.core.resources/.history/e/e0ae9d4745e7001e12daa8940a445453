@@ -1,0 +1,27 @@
+package com.khasim.repository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import com.khasim.entity.Product;
+import com.khasim.mapper.ProductMapper;
+import com.khasim.model.ProductDetails;
+
+public class ProductClient implements CommandLineRunner{
+
+	@Autowired
+	ProductRepository productRepository;
+	@Autowired
+	ProductMapper productMapper;
+	@Override
+	public void run(String... args) throws Exception {
+		//Model class Data having the values
+		ProductDetails problemDetail = new ProductDetails();
+		problemDetail.setProId(101);
+		problemDetail.setProName("Chinthapanddu");
+		problemDetail.setProPrice(220);
+		
+		//co
+		Product product  = productMapper.modelToEntity(problemDetail);
+	}
+
+}

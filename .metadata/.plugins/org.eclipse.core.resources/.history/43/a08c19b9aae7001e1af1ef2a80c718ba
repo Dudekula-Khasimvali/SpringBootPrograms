@@ -1,0 +1,51 @@
+package com.khasim.orm;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import com.khasim.orm.entity.Product;
+import com.khasim.orm.model.ProductDetails;
+import com.khasim.orm.repository.ProductRepository;
+
+@Component
+public class ProductClient implements CommandLineRunner{
+
+	@Autowired
+	ProductRepository productRepository;
+	@Autowired
+	ProductMapper productMapper;
+	@Override
+	public void run(String... args) throws Exception {
+		//Model class Data having the values
+		ProductDetails productDetails = new ProductDetails();
+		productDetails.setProId(101);
+		productDetails.setProName("Chinthapanddu");
+		productDetails.setProPrice(220);
+		
+		//conversion of model data to entity
+		Product product  = productMapper.modelToEntity(productDetails);
+		
+		productRepository.save(product);
+		
+		
+		ProductDetails p1 = new ProductDetails();
+		p1.setProId(102);
+		p1.setProName("Karam");
+		p1.setProPrice(120);
+		
+		ProductDetails p2 = new ProductDetails();
+		p2.setProId(103);
+		p2.setProName("NImmakaya");
+		p2.setProPrice(20);
+		
+		List<ProductDetails> proDetails = List.of(p1,p2); 
+		
+		List<Product> products = productMapper.modelToEntityConversion(proDetails);
+		productRepository.saveAll(products);
+	}
+	
+
+}

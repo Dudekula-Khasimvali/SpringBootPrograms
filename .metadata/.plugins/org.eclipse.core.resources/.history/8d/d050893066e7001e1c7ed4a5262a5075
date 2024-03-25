@@ -1,0 +1,9 @@
+spring.application.name=SpringORMEX
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:mem:khasim
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=khasim@123
+spring.jpa.show-sql=true
+#spring.jpa.database-platform=org.hybernate.dialect.H2Dialect
+server.port = 8999

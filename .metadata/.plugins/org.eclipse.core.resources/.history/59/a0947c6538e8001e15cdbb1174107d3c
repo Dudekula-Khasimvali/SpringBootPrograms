@@ -1,0 +1,46 @@
+package com.khasim.orm;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+
+import com.khasim.orm.Entity.Person;
+import com.khasim.orm.Model.PersonDetails;
+import com.khasim.orm.Repository.PersonRepository;
+
+public class PersonClient implements CommandLineRunner{
+
+	@Autowired
+	PersonMapper mapper;
+	@Autowired
+	PersonRepository personRepository;
+	
+	@Override
+	public void run(String... args) throws Exception {
+		
+		PersonDetails personDetails = new PersonDetails();
+		personDetails.setFirstName("Dudekula");
+		personDetails.setLastname("khasimvali");
+		personDetails.setEmail("kv61460@gmail.com");
+		personDetails.setAge(20);
+		
+		PersonDetails personDetails1 = new PersonDetails();
+		personDetails1.setFirstName("Nakka");
+		personDetails1.setLastname("Vamshi");
+		personDetails1.setEmail("vamshi023@gmail.com");
+		personDetails1.setAge(22);
+		
+		PersonDetails personDetails2 = new PersonDetails();
+		personDetails2.setFirstName("kalathuru");
+		personDetails2.setLastname("Viswa");
+		personDetails2.setEmail("KasiViswa143@gmail.com");
+		personDetails2.setAge(21);
+		
+		List<Person> persons = mapper.ModelToEntity(personDetails,personDetails1,personDetails2);
+			
+		personRepository.saveAll(persons);
+		
+	}
+
+}

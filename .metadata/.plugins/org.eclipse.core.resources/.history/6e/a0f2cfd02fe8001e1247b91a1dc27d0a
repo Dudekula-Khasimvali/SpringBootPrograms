@@ -1,0 +1,83 @@
+package com.khasim.orm;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import com.khasim.orm.entity.Product;
+import com.khasim.orm.model.ProductDetails;
+import com.khasim.orm.repository.ProductRepository;
+
+@Component
+public class ProductClient implements CommandLineRunner{
+
+	@Autowired
+	ProductRepository productRepository;
+	@Autowired
+	ProductMapper productMapper;
+	@Override
+	public void run(String... args) throws Exception {
+		//Model class Data having the values
+		ProductDetails productDetails = new ProductDetails();
+		productDetails.setProId(101);
+		productDetails.setProName("Chinthapanddu");
+		productDetails.setProPrice(220);
+		
+		//conversion of model data to entity
+		Product product  = productMapper.modelToEntity(productDetails);
+		
+		productRepository.save(product);
+		
+		
+		ProductDetails p1 = new ProductDetails();
+		p1.setProId(102);
+		p1.setProName("Karam");
+		p1.setProPrice(120);
+		
+		ProductDetails p2 = new ProductDetails();
+		p2.setProId(103);
+		p2.setProName("NImmakaya");
+		p2.setProPrice(20);
+		
+		List<ProductDetails> proDetails = List.of(p1,p2); 
+		
+		List<Product> products = productMapper.modelToEntityConversion(proDetails);
+		productRepository.saveAll(products);
+		
+		System.out.println("*****FindById*****");
+		//FindById
+		Optional<Product> optional = productRepository.findById(101);
+		if(optional.isPresent())
+		{
+			System.out.println(optional);
+		}
+		else
+		{
+			System.out.println("not present");
+		}
+		
+		System.out.println("*****COUNT*****");
+		//Count
+		long count = productRepository.count();
+		System.out.println("the record count"+count);
+		
+		System.out.println("*****FINDALL*****");
+		//FINDALL
+		List<Product> prdts = productRepository.findAll();
+		for(Product prdt:prdts) {
+			System.out.println(prdt);
+		}
+		
+		System.out.println("*****DELETEBYID*****");
+		//DELETEBYID
+		productRepository.deleteById(101);
+		
+		System.out.println("*****DELETEBYALL*****");
+		//DELETEBYID
+		productRepository.deleteAll();
+
+	}
+}
